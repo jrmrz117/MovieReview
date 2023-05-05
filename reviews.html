@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Movie Reviews</title>
+    </head>
+    <body>
+        <h1>Movie Reviews</h1>
+        <div id="reviews"></div>
+        <br>
+        <a href="home.html">Back Home</a>
+        <script>
+            fetch('reviews.json')
+                .then(response => response.json())
+                .then(reviews => {
+                    const reviewsDiv = document.getElementById("reviews");
+                    reviews.forEach(review => {
+                        const reviewDiv = document.createElement("div");
+                        reviewDiv.innerHTML = `<h3>${review.title}</h3><p>Rating: ${review.rating}/10</p><p>Review: ${review.review}</p>`;
+                        reviewsDiv.appendChild(reviewDiv);
+                    });
+                });
+        </script>
+    </body>
+</html>
